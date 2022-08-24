@@ -7,7 +7,7 @@ API: https://api.artic.edu/api/v1/artworks
 ## Install and run on android
 ```
 npm install -g react-native-cli
-cd react-native-quick-sample
+cd artworks
 npm install
 react-native run-android
 ```
@@ -15,7 +15,7 @@ react-native run-android
 ## Install and run on ios
 ```
 npm install -g react-native-cli
-cd react-native-quick-sample
+cd artworks
 npm install
 react-native run-ios
 ```
