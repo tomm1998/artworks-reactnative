@@ -1,17 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import Button from './Button';
 
-const ArtworkDetail = ({artwork}) => {
+const ArtworkDetail = props => {
   return (
     <View style={styles.viewStyling}>
       <Image
         source={{
-          uri: `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`,
+          uri: `https://www.artic.edu/iiif/2/${props.artwork.image_id}/full/843,/0/default.jpg`,
         }}
         style={styles.imageStyling}
       />
-      <Text style={styles.textStyling}>{artwork.title}</Text>
-      <Text>{artwork.artist_display}</Text>
+      <Text style={styles.textStyling}>{props.artwork.title}</Text>
+      <Text>{props.artwork.artist_display}</Text>
       <Button title="Detail" />
     </View>
   );
@@ -22,13 +23,13 @@ const styles = StyleSheet.create({
   },
   viewStyling: {
     margin: 5,
-    borderColor: 'black',
-    borderWidth: 5,
+    borderColor: '#FEF9EF',
+    borderWidth: 1,
     padding: 5,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: '#17C3B2',
   },
   imageStyling: {
     width: 300,

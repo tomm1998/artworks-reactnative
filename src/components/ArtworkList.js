@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {FlatList, View, Text} from 'react-native';
 import ArtworkDetail from './ArtworkDetail';
 
 //create component
@@ -22,12 +22,18 @@ const ArtworksList = () => {
     loadAsyncArt();
   }, []);
 
-  const renderList = () => {
-    return artList.data.map(item => {
-      return <ArtworkDetail key={item.id} artwork={item} />;
-    });
-  };
-  return <ScrollView>{loaded && renderList()}</ScrollView>;
+  return (
+    loaded && (
+      <FlatList
+        data={artList.data}
+        renderItem={({item}) => {
+          return <ArtworkDetail key={item.id} artwork={item} />;
+        }}
+        keyExtractor={artwork => {
+          artwork.title;
+        }}
+      />
+    )
+  );
 };
-
 export default ArtworksList;

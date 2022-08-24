@@ -13,7 +13,7 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
   textStyling: {
-    fontSize: 22,
+    fontSize: 30,
   },
   viewStyling: {
     height: 70,

@@ -1,28 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import Header from './src/components/Header';
-import ArtworksList from './src/components/ArtworkList';
+import * as React from 'react';
+import {NavigationContainer} from 'react-navigation';
+import {createNativeStackNavigator} from 'react-navigation-stack';
+import ArtworkDetail from './src/screens/ArtworkDetailScreen';
+import ArtworksScreen from './src/screens/ArtworksScreen';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Header title={'Artworks'} />
-      <ArtworksList />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Artworks" components={ArtworksScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
+
+export default App;
