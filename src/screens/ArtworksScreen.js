@@ -1,12 +1,10 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import ArtworksList from '../components/ArtworkList';
-import Header from '../components/Header';
 
 const ArtworksScreen = () => {
   return (
     <View style={styles.container}>
-      <Header title={'Artworks'} />
       <ArtworksList />
     </View>
   );

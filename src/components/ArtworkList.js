@@ -1,10 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View, Text} from 'react-native';
-import ArtworkDetail from './ArtworkDetail';
+import {
+  FlatList,
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 //create component
 
 const ArtworksList = () => {
+  const navigation = useNavigation();
   const [artList, setArtList] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -26,8 +34,24 @@ const ArtworksList = () => {
     loaded && (
       <FlatList
         data={artList.data}
-        renderItem={({item}) => {
-          return <ArtworkDetail key={item.id} artwork={item} />;
+        renderItem={({item, index}) => {
+          return (
+            <View style={styles.viewStyle}>
+              <Image
+                source={{
+                  uri: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+                }}
+                style={styles.imageStyle}
+              />
+              <Text style={styles.textStyle}>{item.title}</Text>
+              <Text>{item.artist_display}</Text>
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate('Detail', {artwork: item})}>
+                <Text style={styles.textButtonStyle}>Detail</Text>
+              </TouchableOpacity>
+            </View>
+          );
         }}
         keyExtractor={artwork => {
           artwork.title;
@@ -36,4 +60,37 @@ const ArtworksList = () => {
     )
   );
 };
+const styles = StyleSheet.create({
+  textStyle: {
+    fontSize: 25,
+  },
+  viewStyle: {
+    margin: 5,
+    borderColor: '#FEF9EF',
+    borderWidth: 1,
+    padding: 5,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#17C3B2',
+  },
+  imageStyle: {
+    width: 300,
+    height: 300,
+  },
+  buttonStyle: {
+    flex: 1,
+    margin: 10,
+    borderColor: '#FEF9EF',
+    borderWidth: 1,
+    borderRadius: 4,
+    backgroundColor: '#FFCB77',
+  },
+  textButtonStyle: {
+    paddingVertical: 2,
+    paddingHorizontal: 20,
+    fontSize: 20,
+    color: '#227C9D',
+  },
+});
 export default ArtworksList;
