@@ -1,38 +1,38 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {StyleSheet, View, Text, Image} from 'react-native';
 
-const ArtworkDetail = ({artwork}) => {
+const ArtworkDetailScreen = ({route}) => {
+  const artwork = route.params.artwork;
   return (
-    <View style={styles.viewStyling}>
+    <View style={styles.viewStyle}>
       <Image
         source={{
           uri: `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`,
         }}
-        style={styles.imageStyling}
+        style={styles.imageStyle}
       />
-      <Text style={styles.textStyling}>{artwork.title}</Text>
+      <Text style={styles.textStyle}>{artwork.title}</Text>
       <Text>{artwork.artist_display}</Text>
-      <Button title="Detail" />
     </View>
   );
 };
 const styles = StyleSheet.create({
-  textStyling: {
+  textStyle: {
     fontSize: 25,
   },
-  viewStyling: {
+  viewStyle: {
     margin: 5,
-    borderColor: 'black',
-    borderWidth: 5,
+    borderColor: '#FEF9EF',
+    borderWidth: 1,
     padding: 5,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: '#17C3B2',
   },
-  imageStyling: {
+  imageStyle: {
     width: 300,
     height: 300,
   },
 });
-export default ArtworkDetail;
+export default ArtworkDetailScreen;
