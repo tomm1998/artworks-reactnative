@@ -13,6 +13,8 @@ const ArtworkDetailScreen = ({route}) => {
       />
       <Text style={styles.textStyle}>{artwork.title}</Text>
       <Text>{artwork.artist_display}</Text>
+      <Text>{artwork.medium_display}</Text>
+      <Text>{artwork.category_titles}</Text>
     </View>
   );
 };
